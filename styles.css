@@ -1,0 +1,29 @@
+html{
+    margin: 0px;
+    border: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    display:flex;
+    flex-direction: column;
+    margin: 0px;
+    border: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+header{
+    height: fit-content;
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+
+h1{
+    font-size: 7vh;
+}
+
+h4{
+    font-size: 3vh;
+}
