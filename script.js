@@ -1,5 +1,11 @@
 let myLibrary = [];
 const booksContainer = document.querySelector('.bookscontainer');
+const addBookButton = document.querySelector('.addbook');
+const formTitle = document.querySelector('#titlef');
+const formAuthor = document.querySelector('#authorf');
+const formPages = document.querySelector('#pagesf');
+const formRead = document.querySelector('#readf');
+
 
 function Book(title, author, pages, read){
     this.title = title;
@@ -19,43 +25,49 @@ function addBook(title, author, pages, read){
 }
 
 function addBookTitle(title){
-    const eachBookContainer = document.querySelector('.book')
+    const eachBookContainer = document.querySelectorAll('.book')
+    let booksArray = Array.from(eachBookContainer)
     
     let titleDiv = document.createElement('div');
     titleDiv.classList.add('title');
-    eachBookContainer.appendChild(titleDiv);
+    booksArray[booksArray.length-1].appendChild(titleDiv);
     titleDiv.textContent = `Title: ${title}`
 }
 
 function addBookAuthor(author){
-    const eachBookContainer = document.querySelector('.book')
-    
+    const eachBookContainer = document.querySelectorAll('.book')
+    let booksArray = Array.from(eachBookContainer)
+
     let authorDiv = document.createElement('div');
     authorDiv.classList.add('author');
-    eachBookContainer.appendChild(authorDiv);
+    booksArray[booksArray.length-1].appendChild(authorDiv);
     authorDiv.textContent = `Author: ${author}`
 }
 
 function addBookPages(pages){
-    const eachBookContainer = document.querySelector('.book')
+    const eachBookContainer = document.querySelectorAll('.book')
+    let booksArray = Array.from(eachBookContainer)
     
     let pagesDiv = document.createElement('div');
     pagesDiv.classList.add('pages');
-    eachBookContainer.appendChild(pagesDiv);
+    booksArray[booksArray.length-1].appendChild(pagesDiv);
     pagesDiv.textContent = `Pages: ${pages}`
 }
 
 function addBookRead(){
-    const eachBookContainer = document.querySelector('.book')
-    
+    const eachBookContainer = document.querySelectorAll('.book')
+    let booksArray = Array.from(eachBookContainer)
+
     let readDiv = document.createElement('div');
     readDiv.classList.add('read');
-    eachBookContainer.appendChild(readDiv);
+    booksArray[booksArray.length-1].appendChild(readDiv);
+    
     readDiv.textContent = 'Read:';
-    const readContainer = document.querySelector('.read');
+    const readContainer = document.querySelectorAll('.read');
+    let readArray = Array.from(readContainer);
     let readBox = document.createElement('input');
     readBox.type = 'checkbox';
-    readContainer.appendChild(readBox);
+    readArray[readArray.length-1].appendChild(readBox);
 }
 
 function addBookToLibrary(title, author, pages, read){
@@ -63,5 +75,3 @@ function addBookToLibrary(title, author, pages, read){
     myLibrary.push(bookAdd);
     addBook(title, author, pages, read);
 }
-
-addBookToLibrary('teste', 'kkkdkke', 'oi', 'aff');

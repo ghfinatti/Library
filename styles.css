@@ -36,20 +36,36 @@ header{
     justify-content: flex-end;
     height:98%;
     width: 50%;
-    align-self: flex-start;
     background-color: white;
 }
 
 .addbook{
-    align-self: center;
+    float:right;
+    margin-right: 3%;
+}
+
+
+.formandbooks{
+    display: flex;
+    height:100%;
+    padding: 10px;
 }
 
 .bookscontainer{
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
     align-content:flex-start;
+    align-self:flex-end;
     height: 100%;
-    padding: 10px;
+    width: 80%;
+}
+
+.formcontainer{
+    display:flex;
+    flex-direction: column;
+    width:11%;
+    min-width:210px;
+    height:100%;
 }
 
 .book{
