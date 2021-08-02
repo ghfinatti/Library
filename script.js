@@ -1,6 +1,7 @@
 let myLibrary = [];
 const booksContainer = document.querySelector('.bookscontainer');
 const addBookButton = document.querySelector('.addbook');
+const form = document.querySelector('#formElem');
 const formTitle = document.querySelector('#titlef');
 const formAuthor = document.querySelector('#authorf');
 const formPages = document.querySelector('#pagesf');
@@ -73,5 +74,10 @@ function addBookRead(){
 function addBookToLibrary(title, author, pages, read){
     let bookAdd = new Book(title, author, pages, read);
     myLibrary.push(bookAdd);
-    addBook(title, author, pages, read);
+    addBook(title, author, pages, read)
 }
+
+addBookButton.addEventListener('click', () => {
+    console.log(formRead.checked)
+    addBookToLibrary(formTitle.value, formAuthor.value, formPages.value, formRead.checked);
+})

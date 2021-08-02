@@ -16,17 +16,15 @@
         </header>
         <div class='formandbooks'>
             <div class='formcontainer'>
-                <form id="formElem">
-                    <label for="titlef">Title:</label><br>
-                    <input type="text" id="titlef"><br><br>
-                    <label for="authorf">Author:</label><br>
-                    <input type="text" id="authorf"><br><br>
-                    <label for="pagesf">Pages:</label><br>
-                    <input type="number" id="pagesf"><br><br>
-                    <label for="readf">Read:</label>
-                    <input type="checkbox"><br><br>
-                    <button class='addbook'>Add book</button>
-                </form>
+                <label for="titlef">Title:</label>
+                <input type="text" id="titlef" placeholder="A Game of Thrones">
+                <label for="authorf">Author:</label>
+                <input type="text" id="authorf" placeholder="George R. R. Martin">
+                <label for="pagesf">Pages:</label>
+                <input type="number" id="pagesf" placeholder="694" required>
+                <label for="readf">Read:</label>
+                <input type="checkbox" id="readf">
+                <button class='addbook' type="submit">Add book</button>
             </div>
             <div class='bookscontainer'>
             <!-- <div class='book'>
