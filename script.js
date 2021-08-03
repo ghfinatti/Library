@@ -18,11 +18,13 @@ function Book(title, author, pages, read){
 function addBook(title, author, pages, read){
     let bookDiv = document.createElement('div');
     bookDiv.classList.add('book');
+    bookDiv.dataset.num = myLibrary.length-1;
     booksContainer.appendChild(bookDiv);
     addBookTitle(title);
     addBookAuthor(author);
     addBookPages(pages);
     addBookRead(read);
+    addDeleteButton();
 }
 
 function addBookTitle(title){
@@ -46,8 +48,8 @@ function addBookAuthor(author){
 }
 
 function addBookPages(pages){
-    const eachBookContainer = document.querySelectorAll('.book')
-    let booksArray = Array.from(eachBookContainer)
+    const eachBookContainer = document.querySelectorAll('.book');
+    let booksArray = Array.from(eachBookContainer);
     
     let pagesDiv = document.createElement('div');
     pagesDiv.classList.add('pages');
@@ -56,8 +58,8 @@ function addBookPages(pages){
 }
 
 function addBookRead(){
-    const eachBookContainer = document.querySelectorAll('.book')
-    let booksArray = Array.from(eachBookContainer)
+    const eachBookContainer = document.querySelectorAll('.book');
+    let booksArray = Array.from(eachBookContainer);
 
     let readDiv = document.createElement('div');
     readDiv.classList.add('read');
@@ -69,6 +71,7 @@ function addBookRead(){
     let readBox = document.createElement('input');
     readBox.type = 'checkbox';
     readArray[readArray.length-1].appendChild(readBox);
+    readBox.checked = formRead.checked;
 }
 
 function addBookToLibrary(title, author, pages, read){
@@ -77,7 +80,29 @@ function addBookToLibrary(title, author, pages, read){
     addBook(title, author, pages, read)
 }
 
+function addDeleteButton(){
+    const eachBookContainer = document.querySelectorAll('.book');
+    let booksArray = Array.from(eachBookContainer);
+
+    let deleteButton = document.createElement('button');
+    deleteButton.classList.add('remove-button');
+    deleteButton.textContent = 'Delete'
+    booksArray[booksArray.length-1].appendChild(deleteButton);
+}
+
 addBookButton.addEventListener('click', () => {
-    console.log(formRead.checked)
     addBookToLibrary(formTitle.value, formAuthor.value, formPages.value, formRead.checked);
+    const delButtons = document.querySelectorAll('.remove-button');
+    delButtons.forEach(delButton => {
+        delButton.addEventListener('click', () => {
+            console.log(delButtons)
+    }) })
 })
+
+
+//create remove function (redefining data attribute of the remaining divs)
+//change "read" to true/false in array when user clicks it
+//finish design
+//add localStorage (?)
+//add filters (?)
+//add book stats (?)
