@@ -18,7 +18,7 @@ function Book(title, author, pages, read){
 function addBook(title, author, pages, read){
     let bookDiv = document.createElement('div');
     bookDiv.classList.add('book');
-    bookDiv.dataset.num = myLibrary.length-1;
+    // bookDiv.dataset.num = myLibrary.length-1;
     booksContainer.appendChild(bookDiv);
     addBookTitle(title);
     addBookAuthor(author);
@@ -90,17 +90,29 @@ function addDeleteButton(){
     booksArray[booksArray.length-1].appendChild(deleteButton);
 }
 
+function updateDataAtt(){
+    const eachBookContainer = document.querySelectorAll('.book');
+    for(let i = 0; i <= eachBookContainer.length-1; i++){
+        eachBookContainer[i].dataset.num = i
+    }
+}
+
 addBookButton.addEventListener('click', () => {
     addBookToLibrary(formTitle.value, formAuthor.value, formPages.value, formRead.checked);
+    updateDataAtt();
     const delButtons = document.querySelectorAll('.remove-button');
     delButtons.forEach(delButton => {
         delButton.addEventListener('click', () => {
-            console.log(delButtons)
+            let arrayPosition = parseInt(delButton.parentNode.dataset.num);
+            console.log(arrayPosition)
+            myLibrary.splice(arrayPosition, 1);
+            //delButton.parentNode.remove();
+            //updateDataAtt();
     }) })
 })
 
 
-//create remove function (redefining data attribute of the remaining divs)
+//fix array.splice bug
 //change "read" to true/false in array when user clicks it
 //finish design
 //add localStorage (?)

@@ -107,3 +107,9 @@ footer{
     position: absolute;
     margin-right: 10px;
 }
+
+#titlef, #authorf, #pagesf, #readf{
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.3);
+    height: 25px;
+}
