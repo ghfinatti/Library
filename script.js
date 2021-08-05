@@ -18,7 +18,6 @@ function Book(title, author, pages, read){
 function addBook(title, author, pages, read){
     let bookDiv = document.createElement('div');
     bookDiv.classList.add('book');
-    // bookDiv.dataset.num = myLibrary.length-1;
     booksContainer.appendChild(bookDiv);
     addBookTitle(title);
     addBookAuthor(author);
@@ -28,7 +27,7 @@ function addBook(title, author, pages, read){
 }
 
 function addBookTitle(title){
-    const eachBookContainer = document.querySelectorAll('.book')
+    eachBookContainer = document.querySelectorAll('.book')
     let booksArray = Array.from(eachBookContainer)
     
     let titleDiv = document.createElement('div');
@@ -38,7 +37,7 @@ function addBookTitle(title){
 }
 
 function addBookAuthor(author){
-    const eachBookContainer = document.querySelectorAll('.book')
+    eachBookContainer = document.querySelectorAll('.book')
     let booksArray = Array.from(eachBookContainer)
 
     let authorDiv = document.createElement('div');
@@ -48,7 +47,7 @@ function addBookAuthor(author){
 }
 
 function addBookPages(pages){
-    const eachBookContainer = document.querySelectorAll('.book');
+    eachBookContainer = document.querySelectorAll('.book');
     let booksArray = Array.from(eachBookContainer);
     
     let pagesDiv = document.createElement('div');
@@ -58,7 +57,7 @@ function addBookPages(pages){
 }
 
 function addBookRead(){
-    const eachBookContainer = document.querySelectorAll('.book');
+    eachBookContainer = document.querySelectorAll('.book');
     let booksArray = Array.from(eachBookContainer);
 
     let readDiv = document.createElement('div');
@@ -69,6 +68,7 @@ function addBookRead(){
     const readContainer = document.querySelectorAll('.read');
     let readArray = Array.from(readContainer);
     let readBox = document.createElement('input');
+    readBox.id = 'read-box';
     readBox.type = 'checkbox';
     readArray[readArray.length-1].appendChild(readBox);
     readBox.checked = formRead.checked;
@@ -81,35 +81,58 @@ function addBookToLibrary(title, author, pages, read){
 }
 
 function addDeleteButton(){
-    const eachBookContainer = document.querySelectorAll('.book');
+    eachBookContainer = document.querySelectorAll('.book');
     let booksArray = Array.from(eachBookContainer);
 
     let deleteButton = document.createElement('button');
     deleteButton.classList.add('remove-button');
     deleteButton.textContent = 'Delete'
     booksArray[booksArray.length-1].appendChild(deleteButton);
+    deleteButtons = document.querySelectorAll('.remove-button');
 }
 
 function updateDataAtt(){
-    const eachBookContainer = document.querySelectorAll('.book');
+    eachBookContainer = document.querySelectorAll('.book');
     for(let i = 0; i <= eachBookContainer.length-1; i++){
         eachBookContainer[i].dataset.num = i
     }
 }
 
 addBookButton.addEventListener('click', () => {
+    
     addBookToLibrary(formTitle.value, formAuthor.value, formPages.value, formRead.checked);
     updateDataAtt();
-    const delButtons = document.querySelectorAll('.remove-button');
-    delButtons.forEach(delButton => {
-        delButton.addEventListener('click', () => {
-            let arrayPosition = parseInt(delButton.parentNode.dataset.num);
-            console.log(arrayPosition)
-            myLibrary.splice(arrayPosition, 1);
-            //delButton.parentNode.remove();
-            //updateDataAtt();
-    }) })
+    
+    // deleteButtons.forEach((deleteButton) => {
+    //     deleteButton.addEventListener('click', (e) => {
+    //         e.target.parentNode.remove();
+    //         arrayNum = parseInt(e.target.parentNode.dataset.num);
+    //         updateDataAtt();
+    //         myLibrary.splice(arrayNum, 1);
+    //         console.log(myLibrary)
+    //     })
+    // })
 })
+
+document.addEventListener('click', (e) => {
+    if(Array.from(e.target.classList)[0] == 'remove-button'){
+        e.target.parentNode.remove();
+        arrayNum = parseInt(e.target.parentNode.dataset.num);
+        updateDataAtt();
+        myLibrary.splice(arrayNum, 1);
+        console.log(myLibrary)
+    }
+    if(e.target.id == 'read-box'){
+        arrayNum = parseInt(e.target.parentNode.parentNode.dataset.num);
+        if(e.target.checked == true){
+            myLibrary[arrayNum].read = true;
+        }
+        if(e.target.checked == false){
+            myLibrary[arrayNum].read = false;
+        }
+    }
+})
+
 
 
 //fix array.splice bug
