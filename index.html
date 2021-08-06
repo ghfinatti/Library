@@ -9,22 +9,32 @@
     <body>
         <header>
             <div class='textcontainer'>
-                <h1>Library</h1>
-                <h4>Your virtual library App</h4>
+                <img id='book-icon' src='/Images/480px-Book-icon-bible.png'>
+                <h1>Lib.it</h1>
             </div>
             <div class='buttoncontainer'></div>
         </header>
         <div class='formandbooks'>
             <div class='formcontainer'>
-                <label for="titlef">Title:</label>
-                <input type="text" id="titlef" placeholder="A Game of Thrones">
-                <label for="authorf">Author:</label>
-                <input type="text" id="authorf" placeholder="George R. R. Martin">
-                <label for="pagesf">Pages:</label>
-                <input type="number" id="pagesf" placeholder="694" required>
-                <label for="readf">Read:</label>
-                <input type="checkbox" id="readf">
-                <button class='addbook' type="submit">Add book</button>
+                <div class='form-title'>Book</div>
+                <form>
+                    <label for="titlef">Title:</label>
+                    <input type="text" id="titlef" placeholder="A Game of Thrones" maxlength="22" required>
+                    <label for="authorf">Author:</label>
+                    <input type="text" id="authorf" placeholder="George R. R. Martin" maxlength="22" required>
+                    <label for="pagesf">Pages:</label>
+                    <input type="number" id="pagesf" placeholder="694" maxlength="22" required oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                    <label for="readf">Read:</label>
+                    <input type="checkbox" id="readf">
+                    <button class='addbook' type="submit">Submit</button>
+                </form>
+                <div class='stats'>
+                    <div class='statWord'>Stats</div>
+                    <div class='stat'>Books Read:</div>
+                    <div class='stat'>Books to Read:</div>
+                    <div class='stat'>Pages Read:</div>
+                    <div class='stat'>Pages to Read:</div>
+                </div>
             </div>
             <div class='bookscontainer'>
             <!-- <div class='book'>

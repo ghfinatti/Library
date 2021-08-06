@@ -98,20 +98,17 @@ function updateDataAtt(){
     }
 }
 
-addBookButton.addEventListener('click', () => {
-    
-    addBookToLibrary(formTitle.value, formAuthor.value, formPages.value, formRead.checked);
-    updateDataAtt();
-    
-    // deleteButtons.forEach((deleteButton) => {
-    //     deleteButton.addEventListener('click', (e) => {
-    //         e.target.parentNode.remove();
-    //         arrayNum = parseInt(e.target.parentNode.dataset.num);
-    //         updateDataAtt();
-    //         myLibrary.splice(arrayNum, 1);
-    //         console.log(myLibrary)
-    //     })
-    // })
+addBookButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    if(formTitle.value == "" || formAuthor.value == "" || formPages.value == ""){
+        alert('Please fill all fields')
+    }
+    else{
+        addBookToLibrary(formTitle.value, formAuthor.value, formPages.value, formRead.checked);
+        updateDataAtt();
+        formTitle.value = formAuthor.value = formPages.value = "";
+        formRead.checked = false;
+    }
 })
 
 document.addEventListener('click', (e) => {
@@ -120,7 +117,6 @@ document.addEventListener('click', (e) => {
         arrayNum = parseInt(e.target.parentNode.dataset.num);
         updateDataAtt();
         myLibrary.splice(arrayNum, 1);
-        console.log(myLibrary)
     }
     if(e.target.id == 'read-box'){
         arrayNum = parseInt(e.target.parentNode.parentNode.dataset.num);
@@ -134,10 +130,5 @@ document.addEventListener('click', (e) => {
 })
 
 
-
-//fix array.splice bug
-//change "read" to true/false in array when user clicks it
-//finish design
+//add stats
 //add localStorage (?)
-//add filters (?)
-//add book stats (?)

@@ -17,17 +17,27 @@ body{
 header{
     display:flex;
     flex-direction: row;
-    height: fit-content;
+    height: 20%;
+    max-height:150px;
+    min-height: 150px;
     width: 100%;
     align-self:flex-start;
     background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(116,58,213,1) 30%, rgba(213,58,157,1) 70%, rgba(255,255,255,1) 100%);
 }
 
 .textcontainer{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
     width:50%;
     height:98%;
     padding-left: 10px;
     background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#book-icon{
+    height: 99%;
 }
 
 .buttoncontainer{
@@ -40,10 +50,24 @@ header{
 }
 
 .addbook{
-    float:right;
-    margin-right: 3%;
+    width: 40%;
+    align-self: center;
+    margin: 10px;
+    background-color: rgba(210, 173, 255, 1);
+    border: 1px solid rgba(164, 88, 255, 1);
+    color: black;
+    border-radius: 10px;
+    height: 11%;
 }
 
+.addbook:hover{
+    border: 1px solid rgba(210, 173, 255, 1);
+    background-color: rgba(164, 88, 255, 1);
+}
+
+.addbook:active{
+    transform: scale(0.9);
+}
 
 .formandbooks{
     display: flex;
@@ -59,13 +83,25 @@ header{
     align-content: flex-start;
     align-self:flex-end;
     height: 100%;
-    width: 80%;
+    width:85%;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 10px;
+    background-color: rgba(248,248,248)
 }
 
 .formcontainer{
     display:flex;
     flex-direction: column;
-    width:11%;
+    height: 100%;
+    width: fit-content;
+    min-width:210px;
+    height: fit-content;
+}
+
+form{
+    display:flex;
+    flex-direction: column;
     min-width:210px;
     height: fit-content;
 }
@@ -84,6 +120,10 @@ header{
     position: relative;
 }
 
+.book:hover{
+    box-shadow: 5px 5px 10px black;
+}
+
 .title, .author, .pages, .read{
     padding:5px;
     font-family: Arial, Helvetica, sans-serif;
@@ -97,10 +137,80 @@ header{
     align-self:flex-end;
     position: absolute;
     margin-right: 10px;
+    background-color: rgba(210, 173, 255, 1);
+    border: 1px solid rgba(164, 88, 255, 1);
+    border-radius: 10px;
+    height: 25%;
+    width: 20%;
 }
 
-#titlef, #authorf, #pagesf, #readf{
-    border-radius: 10px;
-    border: 1px solid rgba(0,0,0,0.3);
+.remove-button:hover{
+    border: 1px solid rgba(210, 173, 255, 1);
+    background-color: rgba(164, 88, 255, 1);
+}
+
+#readf{
     height: 25px;
+}
+
+#titlef, #authorf, #pagesf{
+    border-radius: 10px;
+    border: 1px solid rgba(210, 173, 255, 1);
+    height: 30px;
+    width: 100%;
+    margin: 5px;
+}
+
+#titlef:hover, #authorf:hover, #pagesf:hover{
+    border: 1px solid rgba(164, 88, 255, 1);
+}
+
+label{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 5px;
+}
+
+.stat{
+    margin: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.stats{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.statWord{
+    font-weight: 600;
+    font-size: 25px;
+    align-self: center;
+    margin-bottom: 10px;
+}
+
+.form-title{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    font-size: 25px;
+    align-self: center;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+button {
+    background: transparent;
+    box-shadow: 0px 0px 0px transparent;
+    border: 0px solid transparent;
+    text-shadow: 0px 0px 0px transparent;
+  }
+
+
+button:active {
+    outline: none;
+    border: none;
+}
+  
+button:focus {
+    outline: 0;
 }
