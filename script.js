@@ -108,6 +108,7 @@ addBookButton.addEventListener('click', (e) => {
         updateDataAtt();
         formTitle.value = formAuthor.value = formPages.value = "";
         formRead.checked = false;
+        saveLocalStorage();
     }
 })
 
@@ -130,5 +131,23 @@ document.addEventListener('click', (e) => {
 })
 
 
-//add stats
+function saveLocalStorage(){
+    localStorage.setItem('myLibrary', JSON.stringify(myLibrary))
+}
+
+function restoreLocalStorage(){
+    const books = JSON.parse(localStorage.getItem('myLibrary'))
+  if (books) {
+    myLibrary.books = books.map((book) => JSONToBook(book))
+  } else {
+    myLibrary.books = []
+  }
+}
+
+const JSONToBook = (book) => {
+    return new Book(book.title, book.author, book.pages, book.isRead)
+}
+
+console.log(localStorage);
+
 //add localStorage (?)
