@@ -132,24 +132,12 @@ document.addEventListener('click', (e) => {
     }
 })
 
-
 function saveLocalStorage(){
     localStorage.setItem('myLibrary', JSON.stringify(myLibrary))
 }
 
 function restoreLocalStorage(){
     myLibrary = JSON.parse(localStorage.getItem('myLibrary'));
-    for(let i = 0; i < myLibrary.length; i++){
-        title = myLibrary[i].title;
-        author = myLibrary[i].author;
-        pages = myLibrary[i].pages;
-        read = myLibrary[i].read;
-        addBook(title, author, pages, read);
-    }
-}
-
-function createBooksFromLocalStorage(){
-    restoreLocalStorage();
     for(let i = 0; i < myLibrary.length; i++){
         title = myLibrary[i].title;
         author = myLibrary[i].author;
