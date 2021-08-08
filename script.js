@@ -118,6 +118,7 @@ document.addEventListener('click', (e) => {
         arrayNum = parseInt(e.target.parentNode.dataset.num);
         updateDataAtt();
         myLibrary.splice(arrayNum, 1);
+        saveLocalStorage();
     }
     if(e.target.id == 'read-box'){
         arrayNum = parseInt(e.target.parentNode.parentNode.dataset.num);
@@ -127,6 +128,7 @@ document.addEventListener('click', (e) => {
         if(e.target.checked == false){
             myLibrary[arrayNum].read = false;
         }
+        saveLocalStorage();
     }
 })
 
@@ -136,18 +138,25 @@ function saveLocalStorage(){
 }
 
 function restoreLocalStorage(){
-    const books = JSON.parse(localStorage.getItem('myLibrary'))
-  if (books) {
-    myLibrary.books = books.map((book) => JSONToBook(book))
-  } else {
-    myLibrary.books = []
-  }
+    myLibrary = JSON.parse(localStorage.getItem('myLibrary'));
+    for(let i = 0; i < myLibrary.length; i++){
+        title = myLibrary[i].title;
+        author = myLibrary[i].author;
+        pages = myLibrary[i].pages;
+        read = myLibrary[i].read;
+        addBook(title, author, pages, read);
+    }
 }
 
-const JSONToBook = (book) => {
-    return new Book(book.title, book.author, book.pages, book.isRead)
+function createBooksFromLocalStorage(){
+    restoreLocalStorage();
+    for(let i = 0; i < myLibrary.length; i++){
+        title = myLibrary[i].title;
+        author = myLibrary[i].author;
+        pages = myLibrary[i].pages;
+        read = myLibrary[i].read;
+        addBook(title, author, pages, read);
+    }
 }
 
-console.log(localStorage);
-
-//add localStorage (?)
+restoreLocalStorage();
