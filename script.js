@@ -140,13 +140,14 @@ function restoreLocalStorage(){
     myLibrary = JSON.parse(localStorage.getItem('myLibrary'));
     if (myLibrary == null){
         myLibrary = [];
-    }
-    for(let i = 0; i < myLibrary.length; i++){
-        title = myLibrary[i].title;
-        author = myLibrary[i].author;
-        pages = myLibrary[i].pages;
-        read = myLibrary[i].read;
-        addBook(title, author, pages, read);
+    }else{
+        for(let i = 0; i < myLibrary.length; i++){
+            title = myLibrary[i].title;
+            author = myLibrary[i].author;
+            pages = myLibrary[i].pages;
+            read = myLibrary[i].read;
+            addBook(title, author, pages, read);
+        }
     }
 }
 
