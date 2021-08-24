@@ -87,7 +87,8 @@ header{
     margin-left: 15px;
     margin-right: 15px;
     padding: 10px;
-    background-color: rgba(248,248,248)
+    background-color: rgba(248,248,248);
+    overflow: scroll;
 }
 
 .formcontainer{
